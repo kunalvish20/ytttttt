@@ -20,6 +20,16 @@ import { modules, siteConfig } from "@/lib/site";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
+const courseVideos = [
+  {
+    number: "01",
+    title: "Complete Gaming Channel Growth System",
+    description: "Start here and watch the full training from beginning to end.",
+    url: "https://youtu.be/IAU1iMMfzV8?si=5pvqCjXMAWsSERhc",
+    duration: "FULL LESSON",
+  },
+] as const;
+
 export const metadata: Metadata = {
   title: `Course | ${siteConfig.courseName}`,
   robots: { index: false, follow: false, nocache: true },
@@ -30,12 +40,12 @@ function LockedCourse({ message }: { message?: string }) {
     <main className="lockedPage">
       <div className="lockedCard" data-reveal="">
         <div className="lockBadge">PAID ACCESS ONLY</div>
-        <div className="lockIcon" aria-hidden="true">⌾</div>
+        <div className="lockIcon" aria-hidden="true">LOCK</div>
         <span className="sectionNo">PROTECTED COURSE AREA</span>
         <h1>THIS CONTENT IS <em>LOCKED.</em></h1>
         <p>{message || "This browser does not have a verified paid course entitlement. Complete payment on this device to unlock the course."}</p>
-        <Link className="buyButton" href="/buy"><span>UNLOCK THE COURSE</span><span>→</span></Link>
-        <Link className="backHome" href="/">← Back to website</Link>
+        <Link className="buyButton" href="/buy"><span>UNLOCK THE COURSE</span><span>-&gt;</span></Link>
+        <Link className="backHome" href="/">Back to website</Link>
       </div>
     </main>
   );
@@ -49,8 +59,8 @@ function VerificationUnavailable() {
         <span className="sectionNo">ACCESS NOT RENDERED</span>
         <h1>WE COULDN&apos;T VERIFY <em>ACCESS.</em></h1>
         <p>For security, the course stays hidden whenever PayU verification is temporarily unavailable. Try again in a moment.</p>
-        <Link className="buyButton" href="/opencourse"><span>TRY AGAIN</span><span>↻</span></Link>
-        <Link className="backHome" href="/contact">Need help? Contact support →</Link>
+        <Link className="buyButton" href="/opencourse"><span>TRY AGAIN</span><span>RELOAD</span></Link>
+        <Link className="backHome" href="/contact">Need help? Contact support</Link>
       </div>
     </main>
   );
@@ -81,8 +91,6 @@ export default async function OpenCoursePage() {
     return <LockedCourse message="This PayU transaction is not currently a successful active payment, so course access remains locked." />;
   }
 
-  const courseVideoUrl = process.env.COURSE_VIDEO_URL?.trim();
-
   return (
     <main className="coursePage">
       <header className="courseNav container">
@@ -105,10 +113,30 @@ export default async function OpenCoursePage() {
         <div className="singleCourseMeta">
           <span className="sectionNo">COMPLETE COURSE VIDEO</span>
           <h2>{siteConfig.courseName}</h2>
-          <p>Watch the full training and use the module map below as your implementation checklist.</p>
+          <p>Watch the lesson below, then use the module map as your implementation checklist.</p>
         </div>
-        <div className="singleCourseVideo">
-          <VideoFrame url={courseVideoUrl} title={siteConfig.courseName} locked />
+
+        <div className="courseVideoList" data-stagger="">
+          {courseVideos.map((video) => (
+            <article className="courseVideoCard" key={video.number}>
+              <div className="courseVideoCardTop">
+                <span>{video.number}</span>
+                <small>{video.duration}</small>
+              </div>
+              <div className="courseVideoShell">
+                <div className="videoTopbar">
+                  <div className="dots" aria-hidden="true"><i /><i /><i /></div>
+                  <span>PRIVATE LESSON PLAYER</span>
+                  <b>VERIFIED</b>
+                </div>
+                <VideoFrame url={video.url} title={video.title} locked />
+              </div>
+              <div className="courseVideoText">
+                <h3>{video.title}</h3>
+                <p>{video.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -126,7 +154,7 @@ export default async function OpenCoursePage() {
           <span className="sectionNo">YOU&apos;VE GOT THE SYSTEM</span>
           <h2>NOW GO <em>SHIP.</em></h2>
         </div>
-        <Link href="/" className="backHome">← Back to main website</Link>
+        <Link href="/" className="backHome">Back to main website</Link>
       </section>
     </main>
   );

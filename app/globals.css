@@ -529,14 +529,6 @@ em { color: var(--red-hot); font-style: normal; }
 .courseHero > p { max-width: 650px; margin: 26px 0 0; color: #8a8a8d; font-size: 13px; line-height: 1.74; }
 .courseAccessMeta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 31px; }
 .courseAccessMeta span { padding: 8px 10px; border: 1px solid var(--line-soft); border-radius: 999px; background: rgba(255,255,255,.015); color: #69696c; font-size: 8px; font-weight: 800; letter-spacing: .13em; }
-.lessonList { padding: clamp(60px, 8vw, 100px) 0 clamp(100px, 12vw, 150px); }
-.lesson { display: grid; grid-template-columns: minmax(250px, .62fr) minmax(0, 1.38fr); gap: clamp(48px, 7vw, 92px); align-items: center; padding: clamp(48px, 6vw, 72px) 0; border-bottom: 1px solid var(--line-soft); }
-.lesson:first-child { padding-top: 0; }
-.lessonMeta > span { color: var(--red); font-size: 8px; font-weight: 850; letter-spacing: .16em; }
-.lessonMeta h2 { margin: 17px 0 12px; font-size: clamp(28px, 3vw, 44px); line-height: 1.02; letter-spacing: -.045em; }
-.lessonMeta p { margin: 0 0 23px; color: #7e7e81; font-size: 12px; line-height: 1.7; }
-.lessonMeta small { color: #515154; font-size: 8px; font-weight: 800; letter-spacing: .14em; }
-.lessonVideo { overflow: hidden; border: 1px solid rgba(255,255,255,.11); border-radius: 18px; background: #0b0b0c; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
 .courseFooter { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding: 0 0 96px; }
 .courseFooter h2 { margin: 14px 0 0; font-size: clamp(48px, 7vw, 90px); line-height: .9; letter-spacing: -.06em; }
 
