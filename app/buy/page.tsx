@@ -28,7 +28,11 @@ export default function BuyPage() {
           <CheckoutButton courseName={siteConfig.courseName} priceLabel={siteConfig.priceLabel} />
           <div className="secureNote">🔒 PayU handles payment details. The course unlocks only after server-side hash + transaction verification.</div>
           <div className="checkoutLegal">By paying, you agree to our <Link href="/terms">Terms</Link> and <Link href="/refund">Refund Policy</Link>.</div>
-          <Link className="alreadyAccess" href="/opencourse">Already paid on this browser? Open course →</Link>
+          <Link className="alreadyAccess" href="/opencourse" aria-label="Already paid on this browser? Open course">
+            <span>Already paid on this browser?</span>
+            <strong>Open course →</strong>
+            <small>Use this if payment was completed in the same browser.</small>
+          </Link>
         </aside>
       </div>
     </main>
