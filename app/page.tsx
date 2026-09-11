@@ -130,10 +130,11 @@ export default function Home() {
         <div className="container audience">
           <div className="audienceVisual" data-reveal="left">
             <div className="audienceGrid" aria-hidden="true" />
+            <img className="audiencePhoto" src="/Harvest.png" alt="Gaming creator in a red studio setup" />
             <div className="crosshair" aria-hidden="true"><span /><span /></div>
             <span className="tag tag1">CREATOR MODE</span>
             <span className="tag tag2">GAMING / YOUTUBE</span>
-            <div className="bigNumber">99</div>
+            <div className="bigNumber" aria-hidden="true">99</div>
             <div className="audienceSignal"><i /> SYSTEM ONLINE</div>
             <p>Uploads get easier when the system behind them gets better.</p>
           </div>
